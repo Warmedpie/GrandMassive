@@ -1,0 +1,3 @@
+// GrandMassive.rc : Windows resources (the executable's icon in Explorer and
+// the taskbar). Built only on Windows (CMakeLists.txt adds it for WIN32).
+IDI_ICON1 ICON "GrandMassive.ico"
