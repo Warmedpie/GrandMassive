@@ -28,7 +28,16 @@
 // 600 / 400 games, LOS 100%. Build with AVX2 (GM_NATIVE): the plain-C++
 // fallback runs at ~60% of the speed.
 //
-// Net 9 (current NetData.h): 512 hidden neurons (NNUE_HIDDEN default 256 ->
+// Net 10 (current NetData.h): net 9's layout (512 wide, 8 output buckets,
+// lam 1.0, 25 epochs) on the same 419.0M positions, all relabeled at 32k nodes
+// by the net-9 engine (tools/relabel; before: 8k labels from whichever engine
+// played them, HCE through net 7). Val loss 0.005149 (not comparable with net
+// 9's: different targets); train/val gap 1.8% at epoch 25, still improving
+// every epoch. vs. net 9, same search, 10+0.1: SPRT [0, 5] H1 after 286 games,
+// +82 =164 -40, +51.4 +-18.2 Elo. Adopted Oct 11 2026. Bench 251019. Net 9
+// kept as tools/data/NetData_net9.h (and NetData_prev.h).
+//
+// Net 9: 512 hidden neurons (NNUE_HIDDEN default 256 ->
 // 512), trained on net 8's data (417.7M positions), 8 output buckets, lam 1.0,
 // 25 epochs, val loss 0.004317 (net 8, 256 wide, same data: 0.004696, -8.1%;
 // doubling the data had given the 256 net -2.7%). evalcheck vs. Stockfish
